@@ -204,28 +204,20 @@ class Heap(BinaryTree):
             if leaf.left and leaf.right is None:
                 if leaf.left.value < leaf.value:
                     Heap.swap(leaf, leaf.left)
-                    leaf = leaf.left
-                else:
-                    leaf = leaf.left
+                leaf = leaf.left
             elif leaf.left and leaf.right:
                 mini = min(leaf.left.value, leaf.right.value)
                 if mini == leaf.left.value:
                     if mini < leaf.value:
                         Heap.swap(leaf, leaf.left)
-                        leaf = leaf.left
-                    else:
-                        leaf = leaf.left
+                    leaf = leaf.left
                 else:
                     if mini < leaf.value:
                         Heap.swap(leaf, leaf.right)
-                        leaf = leaf.right
-                    else:
-                        leaf = leaf.right
+                    leaf = leaf.right
             else:
                 return
             return Heap._bubble_down(leaf)
-        else:
-            return
 
     def remove_min(self):
         '''
@@ -242,7 +234,6 @@ class Heap(BinaryTree):
         else:
             Heap._remove_min(self.root, self.size())
             Heap._bubble_down(self.root)
-            print('after bubbling=', self.to_list('inorder'))
 
     @staticmethod
     def _remove_min(node, size):
